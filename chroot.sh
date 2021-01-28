@@ -61,7 +61,7 @@ setup_autologin()
 {
     cat <<-EOF >> /usr/share/lightdm/lightdm.conf.d/01_debian.conf
     [SeatDefaults]
-    autologin-user=rock
+    autologin-user=$USER
     autologin-user-timeout=0
 EOF
 }
