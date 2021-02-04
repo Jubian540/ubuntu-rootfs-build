@@ -63,7 +63,7 @@ get_ubuntu_base()
     cp chroot.sh rootfs
     chmod +x rootfs/chroot.sh
     cp -b /etc/resolv.conf rootfs/etc/resolv.conf
-    cp /usr/bin/qemu-aarch64-static rootfs/usr/bin/
+    cp /usr/bin/qemu-*-static rootfs/usr/bin/
     cp  -r /etc/skel rootfs/etc/
     sed -i s@/$TAG_SOURCE_MIRROR/@/$SOURCE_MIRROR/@g rootfs/etc/apt/sources.list
 }
@@ -86,6 +86,7 @@ build_rootfs()
     umount -vt tmpfs rootfs/run
     umount -v rootfs/dev
 
+    rm -rf rootfs/usr/bin/qemu-*-static
     rm -rf rootfs/etc/apt/sources.list.d/*.key
     rm -rf rootfs/var/lib/apt/lists/*
 }
